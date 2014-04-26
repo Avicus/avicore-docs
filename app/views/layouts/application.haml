@@ -1,0 +1,66 @@
+!!! 5
+%html
+    %head
+        %title Avicus YAML Docs
+        %meta{:"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
+        %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+        = csrf_meta_tags 
+
+        = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lato:100,200,300,400,700'
+        = stylesheet_link_tag '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css'
+
+        = javascript_include_tag 'application'
+        = javascript_include_tag "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"
+        = javascript_include_tag 'lang-yaml'
+        = stylesheet_link_tag 'application', :media => 'all'
+        %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
+    %body
+        %header.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+            .container
+                .navbar-header
+                    %a.navbar-brand{:href => "/"}
+                        Avicus YAML Documentation
+                    %button.navbar-toggle{:type => "button", :"data-toggle" => "collapse", :"data-target" => ".navbar-main-collapse"}
+                        %span.sr-only Toggle navigation
+                        %span.icon-bar
+                        %span.icon-bar
+                        %span.icon-bar
+                %nav.collapse.navbar-collapse.navbar-main-collapse
+                    %ul.nav.navbar-nav.navbar-right
+                        %li{:class => (current_page?(:controller => "main", :action => "index") ? "active" : "")}
+                            %a{:href => "/"}
+                                %i.fa-home
+                                Home
+
+                        %li{:class => (params[:controller] == "components" ? "active" : "")}
+                            %a{:href => "/components/info"}
+                                %i.fa-code
+                                Components
+
+                        %li{:class => (params[:controller] == "references" ? "active" : "")}
+                            %a{:href => "/references/teams"}
+                                %i.fa-book
+                                References
+
+                        %li{:class => (params[:controller] == "examples" ? "active" : "")}
+                            %a{:href => "/examples/dungeon"}
+                                %i.fa-file
+                                Examples
+
+                        %li
+                            %a{:href => "http://maps.avicus.net"}
+                                %i.fa-map-marker
+                                Maps
+
+                        %li{:class => (current_page?(:controller => "main", :action => "test") ? "active" : "")}
+                            %a{:href => "/main/test"}
+                                %i.fa-check-square-o
+                                Parser
+        .container
+            = yield
+        %footer.footer
+            .container
+                &copy; 2013 
+                %a{:href => "http://avicus.net"} Avicus Network
+        :javascript
+                $('pre').addClass("prettyprint lang-yml");

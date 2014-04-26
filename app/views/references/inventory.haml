@@ -1,0 +1,24 @@
+.jumbotron.subhead
+    %h1 References
+    %p Your Avicus YAML cheat sheet!
+
+.row
+    = render('references_sidebar')
+    .col-md-9
+        .page-header
+            %h3 Inventory
+        
+        %p Refer to this picture when determining the slot number of a location a player's inventory.
+        
+        %p       
+            = image_tag "inventory.png"
+        %p
+            Image Source: 
+            %a{:href => "http://minecraft.gamepedia.com/Player.dat_format"} Minecraft Forums
+        %br
+        .page-header
+            %h3 Item Names
+        %p
+            A list of item names can be found here: 
+            %a{:href => "http://jd.bukkit.org/rb/apidocs/org/bukkit/Material.html"} jd.bukkit.org
+            \. Using spaces, rather than using underscores, is encouraged for readability.

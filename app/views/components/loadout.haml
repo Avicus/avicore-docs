@@ -1,0 +1,129 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header
+            %h3 Loadouts
+            %p A loadout is a set of items and included effects typically given to a player on spawn.
+        %p It's easiest to learn how loadouts work by taking a look at existing examples. If you want further detail, we broke apart and examined a typical loadout below.
+        %br
+
+        .page-header
+            %h3 Example Loadout
+        .row
+            .col-md-5{:style => "padding-right: 0px"}
+                .pull-right{:style => 'padding-top: 10px; text-align: right; font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace; font-size: 12px; line-height: 1.5;'}
+                    Refers to the
+                    %a{:href => "/references/inventory"} slot number
+                    of the item listed &raquo;
+                    %br
+
+                    Item names can be found on
+                    %a{:href => "/references/inventory"} this page
+                    &raquo;
+                    %br
+
+                    %br
+
+                    Enchantment names are listed on
+                    %a{:href => "/references/enchantments"} this page
+                    &raquo;
+                    %br
+                    Format for enchantments: 
+                    %code name:level
+                    &nbsp;
+                    %br
+
+                    %br
+                    %br
+                    %br
+                    %br
+
+                    Titles can be used to spice up your map items
+                    &raquo;
+                    %br
+                    Two
+                    %code ''
+                    must be used to represent a single
+                    %code '
+                    &nbsp;
+                    %br
+
+                    %br
+                    %br
+                    %br
+                    %br
+                    %br
+                    Note: Slot 28 is located above slot 2 &raquo;
+                    %br
+
+                    %br
+                    %br
+                    %br
+
+                    As shown here, only the item name is required.
+                    &raquo;
+                    %br
+
+                    %code helmet
+                    %code chestplate
+                    %code leggings
+                    %code boots
+
+                    represent &raquo;
+                    %br
+                    armor slots. &nbsp;
+                    %br
+
+                    %br
+                    %br
+
+                    Loadouts can also supply potion effects. &raquo;
+                    %br
+                    Visit 
+                    %a{:href => "/references/effects"} this page
+                    for valid effect names. &nbsp;
+                    %br
+                    Format for potion effects: 
+                    %code name:level,seconds
+                    &nbsp;
+                    %br
+                    If no time is given, infinity is assumed
+                    &nbsp;
+                    %br
+
+            .col-md-7{:style => "padding-left: 0px"}
+                :markdown
+
+                        0:
+                          item: iron axe
+                          title: 'Axe of Thor'
+                          enchants:
+                          - damage all:5
+                          - dig speed:5
+                          - durability:1
+                        1:
+                          item: bow
+                          title: 'Hawkeye''s Bow'
+                          lore:
+                          - 'Accurate and deadly!'
+                          - 'Use with caution.'
+                          enchants:
+                          - arrow_damage:3
+                          - arrow_knockback:3
+                        28:
+                          item: arrow
+                          amount: 64
+                        helmet:
+                          item: leather helmet
+                        chestplate:
+                          item: iron_chestplate
+                          enchants:
+                          - protection_all:1
+                        effects:
+                        - speed:2
+                        - fire_resistance:1

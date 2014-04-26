@@ -1,0 +1,284 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header
+            %h3 Regions
+            %p
+                Regions are defined areas in a map that enable or disable certain map
+                %a{:href => "/components/flags"} flags
+                \.
+
+        %p
+            To define a region, create the
+            %code regions:
+            section of your map. Each subsequent section placed underneath this section is defined through a unique name.
+
+        %br
+        .page-header#types
+            %h3 Region Types
+
+        .page-header
+            %h4 Points
+
+        %p A point represents a single block. They can also be used to represent spawn locations with a yaw and pitch.
+        %br
+        .row
+            .col-md-5
+                %p A single block:
+                :markdown
+                        region-name:
+                          type: point
+                          point: 0,10,0 # x,y,z
+            .col-md-5
+                %p Spawn Location:
+                :markdown
+                        region-name:
+                          type: point
+                          point: 50.5,60,12.5,90,0 # x,y,z,yaw,pitch
+
+
+        %br
+        .page-header
+            %h4 Global
+
+        %p Covers the entire map rather than a specified region.
+        .row
+            .col-md-4
+                :markdown
+                        region-name:
+                          type: global
+
+
+        %br
+        .page-header
+            %h4 Cuboids
+
+        %p A cuboid is defined by providing two points at two corners of the cuboid like so:
+        %br
+        .row
+            .col-md-4
+                :markdown
+                        region-name:
+                          type: cuboid
+                          min: 10,0,10
+                          max: 1,10,1
+            .col-md-8
+                = image_tag "http://wiki.sk89q.com/w/content/d/dc/Cuboid.png", :width => 300, :class => "pull-right"
+
+
+        %br
+        .page-header
+            %h4 Cylinder
+
+        %p 
+            A cylinder requires defining the
+            %code radius
+            length ,
+            %code height
+            length and
+            %code center
+            point, as demonstrated in the image.
+        %br
+        .row
+            .col-md-4
+                :markdown
+                        region-name:
+                          type: cylinder
+                          radius: 5
+                          height: 50
+                          center: 0,0,0
+            .col-md-7
+                = image_tag "cylinder.png", :width => 110, :class => "pull-right"
+        
+
+        %br
+        .page-header
+            %h4 Sphere
+
+        %p 
+            A sphere requires defining the
+            %code radius
+            length ,
+            %code center
+            point, as demonstrated in the image.
+        %br
+        .row
+            .col-md-4
+                %br
+                :markdown
+                        region-name:
+                          type: sphere
+                          radius: 5
+                          center: 0,0,0
+            .col-md-7
+                = image_tag "sphere.png", :width => 130, :class => "pull-right"
+
+
+        %br
+        .page-header
+            %h4 Join
+
+        %p 
+            Combines multiple regions.
+        .row
+            .col-md-4
+                :markdown
+                        region-name:
+                          type: join
+                          regions:
+                          - other-region
+                          - another-region-name
+
+        %br
+        %br
+        .page-header#flags
+            %h3 Flags
+            %p
+                Flags enable or disable certain events that occur within a region or the entire map.
+
+        %p Here is an example of a map's flag configuration section that would do the following:
+        %ol
+            %li Disable fire damage in the entire map for the red colored team.
+            %li
+                Enable fire damage for red team inside the region
+                %code higher-priority-region
+                because it has a higher priority than the first region and has
+                %code allow
+                set to
+                %code true
+            %li
+                Prevent fall damage for every player in the region named
+                %code fall-place
+
+        :markdown
+                regions:
+                  region-name:
+                    type: global
+                    flags:
+                      fire_damage:
+                        priority: 5
+                        who: 'red'
+                  higher-priority-region:
+                    type: cuboid
+                    min: 10,0,10
+                    max: 15,15,15
+                    flags:
+                      fire_damage:
+                        who: 'red'
+                        priority: 10
+                        allow: true
+                  region-name-2:
+                    type: cuboid
+                    min: 0,0,0
+                    max: 5,60,5
+                    flags:
+                      fall_damage:
+                        who: '*'
+
+        %p
+            Each flag's definition starts with the flag type. This indicates what action, event, etc., will be disabled or enabled. In this hypothetical example, we use
+            %code fall_damage
+            and
+            %code fire_damage
+            \. Other possiblities are listed on the
+            %a{:href => "/references/flags"} references page
+            \.
+
+        %p
+            %span.label.label-warning Note:
+            Using a
+            %code '*'
+            (wildcard) is a universal "wildcard" selection. Using
+            %code who: '*'
+            indicates all teams will be affected by a flag.
+
+        %br
+        %br
+        .page-header#triggers
+            %h3 Triggers
+            %p
+                Triggers are events that run when a flag is called. Here are some example uses for triggers:
+                %ul
+                    %li When a player enters a region, give the player speed.
+                    %li Upon shooting a bow, change the arrow into an enderpearl.
+                    %li Modify the drops of a specific block type.
+                    %li Portals: Enter a region and teleport a player to a point
+
+        %p
+            Take a look at this example. It will do the following:
+            %code speed-region
+        %ol
+            %li
+                Give speed II for 10 seconds and deal 5 hearts of damage to red team players that enter the region
+                %code speed-region
+            %li Change arrows shot into ender pearls with a velocity of 2.2.
+            %li 
+                Teleport a player to
+                %code 49.5,12,256.5,90,0
+                upon entering the portal region,
+                %code portal-1
+            %li 
+                Give 2 gold ingots and Regeneration I for 5 seconds to players after killing a player
+
+        :markdown
+                regions:
+                  example-1-region:
+                    type: cuboid
+                    min: 0,0,0
+                    max: 5,60,5
+                    flags:
+                      enter:
+                        who: 'red'
+                        allow: true # allow players to enter the region
+                        triggers:
+                          heal:
+                            amount: 5
+                  example-2-region:
+                    type: global
+                    flags:
+                      shoot_bow:
+                        who: '*'
+                        triggers:
+                          modify_projectile:
+                            projectile: ender_pearl
+                            velocity: 2.2
+                  example-3-region:
+                    type: cuboid
+                    min: 50,20,50
+                    max: 55,23,50
+                    flags:
+                      enter:
+                        who: '*'
+                        allow: true # allow players to enter the region
+                        triggers:
+                          teleport:
+                            to: 49.5,12,256.5,90,0
+                  example-4-region:
+                    type: global
+                    flags:
+                      kill_player:
+                        who: '*'
+                        allow: true # we're just giving gold, need to allow kills
+                        triggers:
+                          give_loadout:
+                            loadout:
+                              0:
+                                item: gold_ingot
+                                amount: 2
+                              effects:
+                              - REGENERATION:1,5
+
+        %p
+            Each trigger's definition starts with the trigger type. This indicates what action will be called upon being activated. In this hypothetical example, we use
+            %code modify_projectile
+            ,
+            %code teleport
+            %code kill_reward
+            \. Other possiblities are listed on the
+            %a{:href => "/references/triggers"} references page
+            \.

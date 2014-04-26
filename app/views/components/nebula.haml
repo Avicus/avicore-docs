@@ -1,0 +1,59 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header
+            %h3 Nebula
+            
+        .page-header#ctm
+            %h4 1. Capture the Monument
+            %p This game mode requires that addition of monument names and locations to the YAML.
+
+            %p Monuments must be formatted under each team's configuration section. Teams must destroy the monuments that are listed in their team's configuration section.
+
+            :markdown
+
+                    teams:
+                      lime:
+                        spawn: 30.5,48,-854.5,0,0
+                        title: Lime
+                        monuments: # these monuments must be destroyed by lime
+                          a: # the id of the monument must be unique from one another
+                            name: Flag Tower
+                            location: 20,70,-569 # the coordinate of the obsidian block
+                          b:
+                            name: Watch Tower
+                            location: 36,65,-561
+                          c:
+                            name: Bell Tower
+                            location: 43,57,-582
+                      red:
+                        spawn: 33.5,48,-561.5,180,0
+                        title: Red
+                        monuments: # these monuments must be destroyed by red
+                          a:
+                            name: Flag Tower
+                            location: 42,70,-849
+                          b:
+                            name: Watch Tower
+                            location: 26,65,-857
+                          c:
+                            name: Bell Tower
+                            location: 19,57,-836
+
+        .page-header#tdm
+            %h4 2. Team Deathmatch
+            %p 
+                You must set a
+                %code duration
+                \. You can optionally set a max score to be reached with
+                %code max
+                as well. The winner is the team that reaches the max objective or has the most points at the end of the duration.
+                
+            :markdown
+                    duration: 10m
+                    max: 250

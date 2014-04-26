@@ -1,0 +1,53 @@
+.jumbotron.subhead
+    %h1 YAML Parser
+    %p Do you even YAML?
+
+.row
+    .col-md-7
+        %h3 
+            Input
+            %small Copy and paste in your YAML file and click "Parse"
+        %hr
+        
+        %form{:action => "", :method => "post"}
+            %textarea.prettyprint.lang-yml.prettyprinted#lined{:name => "input", :style => "width: 100%; height: 700px"}
+            %br
+            %input.btn.btn-primary.pull-right{:type => "submit"}
+    .col-md-5
+        %h3
+            Output
+            %small The computer's response to your YAML
+        %hr
+        %b Result:
+        - if @error == 2
+            %code Success!
+            %br
+            Your YAML can be read by a computer successfully.
+        - elsif @error == 1
+            %code Error
+            %br
+            Please refer to the error below.
+
+        - elsif @error == 0
+            %code Invalid
+            %br
+            Paste in your YAML on the left.
+
+        %hr
+        %b Information:
+        %pre
+            %code
+                = @output
+        
+
+:javascript
+    $( document ).ready(function() {
+
+        var myCodeMirror = CodeMirror.fromTextArea($("#lined").get(0), {
+          mode:  "yaml",
+          lineNumbers: true,
+          viewportMargin: Infinity,
+          extraKeys: {Tab: function(cm) { cm.replaceSelection("  ", "end"); }}
+        }).setValue("#{@safe}");
+
+    })

@@ -1,0 +1,126 @@
+.jumbotron.subhead
+    %h1 Avicus YAML Documentation
+    %p This website will assist you in writing the YAML files necessary for submitting maps to Avicus.
+    %a{:class => "btn btn-primary btn-lg", :href => "#intro"} Get Started!
+
+%hr
+
+%h2#intro How it all works...
+%br
+
+.row
+    .col-md-4
+        %center
+            = image_tag "code.png", :style => "border-radius: 5px"
+    .col-md-4
+        %center
+            %i.fa-cogs{:style => "font-size: 120px; line-height: 200px"}
+    .col-md-4
+        %center
+            = image_tag "results.png", :style => "border-radius: 5px"
+
+.row
+    .col-md-4
+        %center
+            %h3 Code
+            %p You can write YAML code that contains information regarding a map. This includes anything from the map title to what entity a bow should shoot, and everything in between. The majority of this website is dedicated to explaining what exactly you can do with these YAML files.
+    .col-md-4
+        %center
+            %h3 Conversion
+            %p Our plugins read the YAML code and compute this information, basically translating readable English into computer recognizable data.
+    .col-md-4
+        %center
+            %h3 Results
+            %p Everything written in the YAML file is now used as groundrules for matches played on your map. Each team will spawn in the specified location, they will spawn with the loadout written, etc.
+
+%hr
+
+    = @yaml
+%h2 Basic Requirements
+%br
+
+A plain text editor will work fine with creating a YAML file, but we highly recommend
+%a{:href => "http://www.sublimetext.com/"} Sublime Text
+(Windows, Mac, Mac) for doing so as it makes formatting easy and some references to this program may be included in our documentation. It may be downloaded and evaluated for free, though a license is necessary for continued use.
+
+%hr
+
+%h2 YAML Basics
+%br
+
+YAML is a very simple markup language, despite it's name (YAML Ain't a Markup Lanuage). There are a few very important things to take note of when writing in YAML.
+%br
+%br
+
+
+.row
+    .col-md-10
+    
+        %h4 Indentation
+        %p 
+            There can be no tab characters. Instead, indentation must be done in the form of two spaces like shown in the following example. Before title and world, there are two spaces.
+        %br
+        %h4 Sections
+        %p
+            Sections in YAML are used to categorize and organize configration options. The following example represents a section named "info" with the configuration options "title", "world", "duration",  "build", and "time-lock" inside. When referring to options inside a section, you may use the format "section_name.config_option". For example, "info.title" would return "Ravaged" since "title" is inside the section "info".
+        %br
+        %h4 Variable Types
+        %p
+            There are multiple types of variables used in YAML that you should know before starting.
+
+
+        %br#string
+        %u
+            %b Strings:
+        :markdown
+            A string is a any segment of text that is primarily made up of alpha numerics. In order to avoid errors and for readability, you should surround strings with apostrophes like so:
+
+                title: 'Ravaged'
+
+        %br#duration
+        %u
+            %b Duration:
+
+        %p
+            A duration defines a period of time. A duration is suffixed by an integer, then a type of time such as
+            %code s
+            for seconds,
+            %code m
+            for minutes or
+            %code h
+            for hours. This example results in a duration of 25 minutes.
+        :markdown
+
+                duration: 25m
+
+        %br#integer
+        %u
+            %b Integers:
+        :markdown
+            An integer is essentially a whole number. Negative infinity to infinity, no decimals. It is typically used to describe an amount.
+
+                amount: 32
+
+        %br#decimal
+        %u
+            %b Decimal:
+        :markdown
+            Used when greater precision than an integer is possible such as in the case of changing the velocity of arrows shot or player speeds.
+
+                velocity: 2.52
+
+        %br#coordinate
+        %u
+            %b Coordinate:
+        :markdown
+            Coordinates mark a location in your map. It includes the x, y, z locations as well as yaw, the player's direction, and pitch, the player's tilt. These values are all decimals or integers.
+
+                spawn: 783.5,76,842.5,0,0
+
+        %br#boolean
+        %u
+            %b Boolean:
+        :markdown
+            Can only be 'true' or 'false', nothing else. It is used to toggle a feature.
+
+                allow: true

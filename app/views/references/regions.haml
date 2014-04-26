@@ -1,0 +1,63 @@
+.jumbotron.subhead
+    %h1 References
+    %p Your Avicus YAML cheat sheet!
+
+.row
+    = render('references_sidebar')
+    .col-md-9
+        .page-header
+            %h3 Region Shapes
+            %p
+                List of
+                %a{:href => "/components/regions#types"} region types
+                \.
+
+        %table.table.table-bordered.table-striped.table-condensed
+            %tr
+                %th Type
+                %th Description
+            %tr
+                %td
+                    %code POINT
+                %td
+                    A single block or location with a defined
+                    %code point
+                    (coordinate).
+            %tr
+                %td
+                    %code CUBOID
+                %td
+                    A rectangular prism with two defined corners,
+                    %code min
+                    and
+                    %code max
+            %tr
+                %td
+                    %code SPHERE
+                %td 
+                    A sphere with a defined 
+                    %code radius
+                    and 
+                    %code center
+                    point.
+            %tr
+                %td
+                    %code CYLINDER
+                %td 
+                    A cylindrical shape with a defined 
+                    %code radius
+                    ,  
+                    %code height
+                    and 
+                    %code center
+                    point.
+            %tr
+                %td
+                    %code GLOBAL
+                %td 
+                    Covers the entire map
+            %tr
+                %td
+                    %code JOIN
+                %td 
+                    Join together multiple regions

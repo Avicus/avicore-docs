@@ -1,0 +1,65 @@
+.jumbotron.subhead
+    %h1 Examples
+    %p YAML file examples taken directly from current Avicus maps.
+
+.row
+    = render('examples_sidebar')
+
+    .col-md-9
+        .page-header
+            %h3 Dungeon
+            %p 
+                A map for the
+                %a{:href => "/components/avicade#minotaur"} Avicade Minotaur
+                game mode. You can find the complete YAML
+                %a{:href => "http://maps.avicus.net/Dungeon/map.yml"} here
+                \.
+
+        %p 
+            The info section of a YAML is always necessary.
+
+        :markdown
+                info:
+                  title: Dungeon
+                  world: Dungeon
+                  version: 1.0
+                  type: minotaur
+                  creators:
+                  - funkystudios
+                  contributors:
+                  - killerbye22
+                  spawn: 23.5,103,-792.5,0,0
+
+
+        %p
+            %br
+            Minotaur requires specific team names and max player sizes.
+
+        :markdown
+
+                teams:
+                  red:
+                    title: Minotaur
+                    max: 0
+                    spawn: 3.5,25,-825.5,0,0
+                  lime:
+                    title: Players
+                    max: 15
+                    spawn: 3.5,25,-817.5,0,0
+
+        %p
+            %br
+            Minotaur also requires a region in which players must reach in order to win. In this example, we define a region named
+            %code win
+            and later define this region as the
+            %code goal
+            which is the region the players must reach to win.
+
+        :markdown
+
+                regions:
+                  win:
+                    type: cuboid
+                    min: 19,16,-622
+                    max: -11,36,-604
+                goal: win

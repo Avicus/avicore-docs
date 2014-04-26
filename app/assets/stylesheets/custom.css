@@ -1,0 +1,41 @@
+
+
+body {
+	padding-top: 60px;
+	background-image: url(/assets/bg.png);
+	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+i[class^=fa-] {	
+	font-family: "FontAwesome";
+	font-style: normal;
+}
+
+body code {
+	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+}
+
+footer.footer {
+	padding-top: 40px;
+	padding-bottom: 30px;
+	margin-top: 100px;
+	color: #777;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
+}
+
+.page-header {
+	margin-top: 0px;
+}
+
+.page-header h1,
+.page-header h2,
+.page-header h3,
+.page-header h4 {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.page-subheader {
+	margin-top: 20px;
+}

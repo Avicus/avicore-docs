@@ -1,0 +1,102 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header
+            %h3 Map Info Section
+        The info section is necessary for all maps on Avicus. It will include the map title, world name, duration, spectator spawn location and more. Here is an info section taken from Ravaged, a Nebula CTM map. Most configuration options are self explanatory, but each option is explained below.
+        %br
+        %br
+        :markdown
+
+                info:
+                  title: 'Ravaged'
+                  world: 'Ravaged'
+                  version: '1.0'
+                  type: 'dtm'
+                  creators:
+                  - 'neresil'
+                  contributors:
+                  - 'albu24'
+                  spawn: 783.5,76,842.5,0,0
+
+        .page-header.page-subheader
+            %h3 Map Types
+
+        %table.table.table-bordered.table-striped.table-hover
+            %tr
+                %th Type
+                %th Category
+                %th Game
+            %tr
+                %td
+                    %code CTM
+                %td
+                    %a{:href => "/components/nebula"} Nebula
+                %td
+                    %a{:href => "/components/nebula#ctm"} Capture the Monument
+            %tr
+                %td
+                    %code TDM
+                %td
+                    %a{:href => "/components/nebula"} Nebula
+                %td
+                    %a{:href => "/components/nebula#tdm"} Team Deathmatch
+            %tr
+                %td
+                    %code CTH
+                %td
+                    %a{:href => "/components/cth"} Control the Hill
+                %td
+            %tr
+                %td
+                    %code WALLS
+                %td
+                    %a{:href => "/components/walls"} The Walls
+                %td
+            %tr
+                %td
+                    %code RED_ALERT
+                %td
+                    %a{:href => "/components/avicade"} Avicade
+                %td
+                    %a{:href => "/components/avicade#red_alert"} Red Alert
+            %tr
+                %td
+                    %code GHOST_SQUADRON
+                %td
+                    %a{:href => "/components/avicade"} Avicade
+                %td
+                    %a{:href => "/components/avicade#gs"} Ghost Squadron
+            %tr
+                %td
+                    %code OITC
+                %td
+                    %a{:href => "/components/avicade"} Avicade
+                %td
+                    %a{:href => "/components/avicade#oitc"} One in the Chamber
+            %tr
+                %td
+                    %code HARDCORE_OITC
+                %td
+                    %a{:href => "/components/avicade"} Avicade
+                %td 
+                    %a{:href => "/components/avicade#hardcore_oitc"} Hardcore One in the Chamber
+            %tr
+                %td
+                    %code SNAKE
+                %td
+                    %a{:href => "/components/avicade"} Avicade
+                %td
+                    %a{:href => "/components/avicade#snake"} Snake
+            %tr
+                %td
+                    %code MINOTAUR
+                %td
+                    %a{:href => "/components/avicade"} Avicade
+                %td
+                    %a{:href => "/components/avicade#minotaur"} Minotaur

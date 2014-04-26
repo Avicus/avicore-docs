@@ -1,0 +1,128 @@
+.jumbotron.subhead
+    %h1 References
+    %p Your Avicus YAML cheat sheet!
+
+.row
+    = render('references_sidebar')
+    .col-md-9
+        .page-header
+            %h3 Trigger Types
+            %p
+                List of region
+                %a{:href => "/components/regions#triggers"} triggers
+                \.
+
+        %h4 Global Triggers
+        %p Triggers available on any game mode
+
+        %table.table.table-bordered.table-striped.table-condensed
+            %tr
+                %th{:style => "width: 20%"} Name
+                %th Action
+                %th{:style => "width: 57%"} Required Variables
+            %tr
+                %td
+                    %code heal
+                %td Heals the player
+                %td
+                    %code amount
+                    Health to give, measured in half-hearts
+            %tr
+                %td
+                    %code feed
+                %td Satisfy the hunger
+                %td
+                    %code amount
+                    Number of food points to give, measured in half-food-points
+            %tr
+                %td
+                    %code teleport
+                %td Move to a location
+                %td
+                    %code to
+                    The coordinate the player will be teleported to
+            %tr
+                %td
+                    %code message
+                %td Sends a chat message to a player
+                %td
+                    %code message
+                    The message to send to the player
+            %tr
+                %td
+                    %code modify_drops
+                    *
+                %td Change the drops of destroyed blocks
+                %td
+                    %code type
+                    The type of block to modify. Use an asterisk to indicate all blocks.
+                    %br
+                    %code drops
+                    A loadout containing the items to drops
+            %tr
+                %td
+                    %code modify_projectile
+                    **
+                %td Change the projectile type of a bow shot.
+                %td
+                    %code projectile
+                    The entity to shoot instead of an arrow
+                    %br
+                    %code velocity
+                    The velocity of the entity (default is 2.2)
+            %tr
+                %td
+                    %code ignite_tnt
+                    ***
+                %td Configure TNT to ignite once place
+                %td
+                    %code delay
+                    Time until explosion in seconds (default is 3.0)
+                    %br
+                    %code block-damage
+                    Toggle terrain damage (default is true)
+                    %br
+                    %code yield
+                    Percent of block items dropped caused by explosion (default is 0)
+            %tr
+                %td
+                    %code give_loadout
+                %td Rewards a set of items and effects
+                %td
+                    %code loadout
+                    A loadout containing to give the killer
+            %tr
+                %td
+                    %code set_loadout
+                %td Sets the inventory and potion effects for a player. Can function as kits upon clicking a sign for entering an area.
+                %td
+                    %code loadout
+                    A loadout containing to give the killer
+            %tr
+                %td
+                    %code score
+                %td Nebual TDM and Nexus trigger that rewards the team with a specified amount of points.
+                %td
+                    %code amount
+                    Amount of points to give to the team
+
+        * The
+        %code modify_drops
+        trigger must be used under the flag type
+        %code BUILD
+
+        %br
+
+        ** The
+        %code modify_projectile
+        trigger must be used under the flag type
+        %code SHOOT_BOW
+
+        %br
+
+        *** The
+        %code ignite_tnt
+        trigger must be used under the flag type
+        %code BUILD
+
+        %br

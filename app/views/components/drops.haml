@@ -1,0 +1,41 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header
+            %h3 Item Drops
+            %p
+                A map YAML can modify the behavior of an item dropped by the player.
+
+        %h4 Remove Drops
+        %p
+            In order to prevent players from dropping certain item types (on death or forcefully), you must define the
+            %code remove-drops
+            section and list off the items like so:
+
+        :markdown
+                remove-drops:
+                - leather helmet
+                - gold chestplate
+                - leather pants
+                - glass
+
+        %br
+
+        %h4 Repair Drops
+        %p
+            Items that are listed under
+            %code repair-drops
+            can be dropped by players. Once a player picks the item up, if that player has the item in their inventory, it will merge and repair the item completely rather than adding the item to their inventory. If the player does not already have that item in their inventory, the item will appear in their inventory as normal.
+
+        :markdown
+                repair-drops:
+                - stone sword
+                - bow
+                - iron pickaxe
+
+        %p In this example, players can only possess one of each of the listed items at any given time as picking up a stone sword, bow or iron pickaxe would result in it repairing the item in their inventory.

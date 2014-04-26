@@ -1,0 +1,118 @@
+.jumbotron.subhead
+    %h1 References
+    %p Your Avicus YAML cheat sheet!
+
+.row
+    = render('references_sidebar')
+    .col-md-9
+        .page-header
+            %h3 Flag Types
+            %p
+                List of region
+                %a{:href => "/components/regions#flags"} flags
+                \.
+
+        %table.table.table-bordered.table-striped.table-condensed
+            %tr
+                %th Name
+                %th Action
+            %tr
+                %td
+                    %code BUILD
+                %td Placing or breaking blocks
+            %tr
+                %td
+                    %code ENTER
+                %td Moving into a region
+            %tr
+                %td
+                    %code LEAVE
+                %td Moving out of a region
+            %tr
+                %td
+                    %code INTERACT
+                %td Right or left click block
+            %tr
+                %td
+                    %code SHOOT_BOW
+                %td An arrow is shot by a player
+            %tr
+                %td
+                    %code KILL_PLAYER
+                %td A player kills an enemy player
+            %tr
+                %td
+                    %code DAMAGE
+                %td Any form of damage
+            %tr
+                %td
+                    %code CONTACT_DAMAGE
+                %td Damage caused when an entity contacts a block such as a Cactus.
+            %tr
+                %td
+                    %code ENTITY_ATTACK_DAMAGE
+                %td Damage caused when an entity attacks another entity.
+            %tr
+                %td
+                    %code PROJECTILE_DAMAGE
+                %td Damage caused when attacked by a projectile.
+            %tr
+                %td
+                    %code SUFFOCATION_DAMAGE
+                %td Damage caused by being put in a block
+            %tr
+                %td
+                    %code FALL_DAMAGE
+                %td Damage caused when an entity falls a distance greater than 3 blocks
+            %tr
+                %td
+                    %code FIRE_DAMAGE
+                %td Damage caused by direct exposure to fire
+            %tr
+                %td
+                    %code FIRE_TICK_DAMAGE
+                %td Damage caused due to burns caused by fire
+            %tr
+                %td
+                    %code LAVA_DAMAGE
+                %td Damage caused by direct exposure to lava
+            %tr
+                %td
+                    %code DROWNING_DAMAGE
+                %td Damage caused by running out of air while in water
+            %tr
+                %td
+                    %code BLOCK_EXPLOSION_DAMAGE
+                %td Damage caused by being in the area when a block explodes.
+            %tr
+                %td
+                    %code ENTITY_EXPLOSION_DAMAGE
+                %td Damage caused by being in the area when an entity, such as a Creeper or TNT, explodes.
+            %tr
+                %td
+                    %code LIGHTNING_DAMAGE
+                %td Damage caused by being struck by lightning
+            %tr
+                %td
+                    %code STARVATION_DAMAGE
+                %td Damage caused by starving due to having an empty hunger bar
+            %tr
+                %td
+                    %code POISON_DAMAGE
+                %td Damage caused due to an ongoing poison effect
+            %tr
+                %td
+                    %code MAGIC_DAMAGE
+                %td Damage caused by being hit by a damage potion or spell
+            %tr
+                %td
+                    %code WITHER_DAMAGE
+                %td Damage caused by Wither potion effect
+            %tr
+                %td
+                    %code FALLING_BLOCK_DAMAGE
+                %td Damage caused by being hit by a falling block which deals damage
+            %tr
+                %td
+                    %code THORNS_DAMAGE
+                %td Damage caused in retaliation to another attack by the Thorns enchantment.

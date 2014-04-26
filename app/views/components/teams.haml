@@ -1,0 +1,88 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header
+            %h3 Teams
+        %p Teams are necessary for nearly every Avicus game. In the YAML, they are a primary configuration section, typically placed right below the info section.
+        %br
+
+        %p 
+            %b 1.
+            Start off with defining the teams section.
+
+        :markdown
+
+                teams: 
+        %hr
+
+        %p 
+            %b 2.
+            Indent the next section and define your first team.
+
+        :markdown
+
+                teams:
+                  red: 
+
+        %p
+            %code red:
+            determines the team's color. Visit the
+            %a{:href => "/references/teams"} references page
+            to see all possibilities.
+        %hr
+
+
+        %p 
+            %b 3.
+            Again, indent, and define the team's title and spawn location.
+
+
+        :markdown
+
+                teams:
+                  red:
+                    title: 'Evil'
+                    spawn: 50.5,70,23.5,0,0
+                    max: 25
+        %p
+            %code title: 'Evil'
+            will make the team's title,
+            %code Evil
+            , which is what players will see in chat.
+        %p
+            %code spawn: 50.5,70,23.5,90,0
+            indicates that red team will spawn at
+            %code 50.5,70,23.5
+            and with a yaw of
+            %code 90
+            and a pitch of
+            %code 0
+
+        %p
+            %code max: 25
+            makes the max team size 25. By default, teams can have an infinite number of players.
+        %hr
+
+        %p 
+            %b 4.
+            Now add other teams as necessary...
+
+
+        :markdown
+
+                teams:
+                  red:
+                    title: 'Evil'
+                    spawn: 50.5,70,23.5,0,0
+                    max: 25
+                  blue:
+                    title: 'Happy'
+                    spawns: 
+                      - 21.5,70,-50.5,0,0
+                      - 11.5,70,-50.5,0,0
+                    max: 25

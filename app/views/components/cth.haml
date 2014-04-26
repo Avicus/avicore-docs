@@ -1,0 +1,24 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header#ctm
+            %h3 Control the Hill
+
+        %p 
+            CTH requires defining the region in which a players can be rewarded points (the hill). Please refer to the regions documentation prior to creating a CTH YAML file.
+        %br
+        %p
+            First define the region, then set
+            %code hill
+            to the name of your defined region.
+
+        :markdown
+                regions:
+                    le-region-name:
+                        # refer to regions documentation
+                hill: le-region-name

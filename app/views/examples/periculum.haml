@@ -1,0 +1,161 @@
+.jumbotron.subhead
+    %h1 Examples
+    %p YAML file examples taken directly from current Avicus maps.
+
+.row
+    = render('examples_sidebar')
+
+    .col-md-9
+        .page-header
+            %h3 Periculum
+            %p 
+                A map for the
+                %a{:href => "/components/nebula#tdm"} Nebula Team Deathmatch
+                game mode. You can find the complete YAML
+                %a{:href => "http://maps.avicus.net/Periculum/map.yml"} here
+                \.
+
+        %p 
+            The info section of a YAML is always necessary.
+
+        :markdown
+                info:
+                  title: Periculum
+                  world: Periculum
+                  version: 1.3
+                  type: tdm
+                  creators:
+                  - TheMasterCow
+                  contributors:
+                  - Ambamore2000
+                  - funkystudios
+                  spawn: -74.5,141,255.5,90,0
+
+
+        %p
+            %br
+            Next, we define the teams with their spawn location, max player count and title.
+
+        :markdown
+                teams:
+                  red:
+                    title: Red Team
+                    max: 25
+                    spawn: -75,80,176,0,0
+                  blue:
+                    title: Blue Team
+                    max: 25
+                    spawn: -74,80,335,180,0
+
+        %p
+            %br
+            This map requires regions for the team spawn locations and modifying arrows into TNT.
+            %br
+            %br
+            The region,
+            %code red-area
+            is a cylinder around team red's spawn that prevents all players from building there and disables damage for red team within the area. 
+            The region,
+            %code blue-area
+            defines the same flags, except prevents damage for blue team rather than red. Finally, there is a region named
+            %code everywhere
+            that turns arrows shot by players into ignited TNT and rewards players an arrow upon killing an enemy.
+
+            :markdown
+                    regions:
+                      red-area:
+                        type: cylinder
+                        center: -75,50,180
+                        radius: 11
+                        height: 7
+                        flags:
+                          build:
+                            who: '*'
+                            message: '&cYou may not build in the spawn area.'
+                          damage:
+                            who: 'red'
+                      blue-area:
+                        type: cylinder
+                        center: -74,50,331
+                        radius: 11
+                        height: 7
+                        flags:
+                          build:
+                            who: '*'
+                            message: '&cYou may not build in the spawn area.'
+                          damage:
+                            who: 'blue'
+                      everywhere:
+                        type: global
+                        flags:
+                          shoot_bow:
+                            who: '*'
+                            triggers:
+                              modify_projectile:
+                                projectile: primed_tnt
+                                velocity: 1.5
+                                block-damage: false
+                          kill_player:
+                            who: '*'
+                            allow: true
+                            triggers:
+                              give_loadout:
+                                loadout:
+                                  0:
+                                    item: arrow
+
+        %p
+            %br
+            Next we have the loadout. This is the inventory that players recieve upon joining the game or respawning after death. Notice the customized titles and enchantments applied to various items.
+
+            :markdown
+                    loadout:
+                      helmet:
+                        item: leather helmet
+                      chestplate:
+                        item: leather chestplate
+                      leggings:
+                        item: gold leggings
+                      boots:
+                        item: leather boots
+                      0:
+                        item: stone sword
+                      1:
+                        item: bow
+                        title: '&4TNT Bow'
+                        enchants:
+                        - durability:1
+                      2:
+                        item: stone pickaxe
+                      3:
+                        item: stone axe
+                      4:
+                        item: web
+                        amount: 4
+                      5:
+                        item: steak
+                        amount: 8
+                      6:
+                        item: golden apple
+                        title: '&eGolden Apple'
+                        amount: 2
+                      8:
+                        item: arrow
+                        amount: 1
+
+        %p
+            %br
+            Finally, we modify the items dropped by players.
+
+            :markdown
+                    remove-drops:
+                    - leather helmet
+                    - leather chestplate
+                    - gold leggings
+                    - leather boots
+                    - stone pickaxe
+                    - stone axe
+
+                    repair-drops:
+                    - stone sword
+                    - bow

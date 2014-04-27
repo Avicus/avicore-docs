@@ -1,0 +1,38 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header#ctm
+            %h3 Holograms
+            %p A holographic display allows map makers to put text in the game like blocks. Players can walk through the text and it faces them at all times.
+
+
+        .row
+            .col-md-9
+                %p
+                    Create the
+                    %code holograms
+                    block to start off. Each section under this block indicates a new hologram. Each hologram must have a defined
+                    %code location
+                    in addition to the
+                    %code text
+                    to display. 
+                %p The hologram can be up to 20 lines but it is highly recommended to limit a hologram to 4-5 lines as any more may cause lag for certain clients.
+                :markdown
+                        holograms:
+                          spawn:
+                            location: -31.5,88.5,-816.5
+                            text:
+                            - '&a&lHalcyon'
+                            - '&e&omade by funkystudios'
+                          other-hologram:
+                            location: 50.5,100.5,-600.5
+                            text:
+                            - '&c&lRed Base'
+                            - '&4<- &dLeft Tower &f&l| &dRight Tower &4->'
+            .col-md-3
+                %img.img-rounded.pull-right{:src => "http://i.imgur.com/hBP9Pj4.png", :style => "width: 200px"}

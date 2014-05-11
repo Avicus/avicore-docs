@@ -60,7 +60,8 @@
             = yield
         %footer.footer
             .container
-                &copy; 2013 
+                &copy;
+                = Time.now.year
                 %a{:href => "http://avicus.net"} Avicus Network
         :javascript
                 $('pre').addClass("prettyprint lang-yml");

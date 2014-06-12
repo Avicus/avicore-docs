@@ -47,15 +47,15 @@
                                 %i.fa-file
                                 Examples
 
-                        %li
-                            %a{:href => "http://maps.avicus.net"}
-                                %i.fa-map-marker
-                                Maps
-
                         %li{:class => (current_page?(:controller => "main", :action => "test") ? "active" : "")}
                             %a{:href => "/main/test"}
                                 %i.fa-check-square-o
                                 Parser
+
+                        %li
+                            %a{:href => "http://maps.avicus.net"}
+                                %i.fa-folder
+                                Maps
         .container
             = yield
         %footer.footer

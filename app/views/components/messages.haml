@@ -1,0 +1,141 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header#ctm
+            %h3 Messages
+            %p Region flags can trigger messages to display in the user's chat bar.
+
+        .row
+            .col-md-12
+                %p
+                    In this example, taken from
+                    %a{:href => "http://maps.avicus.net/Nebula/DTM/AbandonedPark/map.yml"} Abandoned Park
+                    , a message is displayed to a player who builds in the region
+                    %code red-area
+                    \. Note that color codes can be used in any fashion in messages sent to users.
+                    :markdown
+                            regions:
+                              red-area:
+                                type: cylinder
+                                center: 43,97,-151
+                                radius: 12
+                                height: 6
+                                flags:
+                                  build:
+                                    who: '*'
+                                    message: '&cYou may not build in this team''s spawn!'
+        %br
+        %br
+
+        .page-header#translations
+            %h3 Message Translations
+            %p Although not required, it is recommended to make the majority of messages sent in your maps compatible with our translation system documented below.
+
+        .row
+            .col-md-12
+                %p
+                    Avicus supports a number of translatable messages that are commonly seen in maps. Each has a unique ID that will be used in the
+                    %code message
+                    string. A string that can be translated is inserted into a message via braces surrounding it's ID:
+                    %code message: '&c{ID}'
+                    Some messages will contain variables,
+                    %code {0}
+                    %code {1}
+                    ,, that can be set with following the format:
+                    %code {ID,Variable 0,Variable 1,...}
+                %p
+                    %b Example:
+                    To send the message, "You may not build in Blue Team's spawn area.", with "Blue Team" colored blue and the reset red, you would follow this process:
+                    %ol
+                        %li 
+                            Start with the color code for red,
+                            %code &c
+                            \. 
+                        %li
+                            Add on the message ID which is
+                            %code {build.spawnSpecific}
+                        %li
+                            Since you are specifying a specific team you must add in the variable resulting in the ID to look like
+                            %code {build.spawnSpecific,&9Blue Team&c}
+                            \. The
+                            %code &c
+                            is needed at the end to reset the message color to red.
+                        %li
+                            Putting it all together, the result would be
+                            %code message: '&c{build.spawnSpecific,&9Blue Team&c}'
+                %br
+
+                %p
+                    Below is the selection of translatable messages that can be used in messages.
+
+                %table.table.table-bordered.table-striped
+                    %tr
+                        %th ID
+                        %th Message
+                        %th Example Usage
+                    %tr
+                        %td
+                            %code build.void
+                        %td You are not allowed to build in the void.
+                        %td 
+                            %code message: '&c{build.void}'
+                    %tr
+                        %td
+                            %code build.spawn
+                        %td You may not build in the spawn area.
+                        %td 
+                            %code message: '&c{build.spawn}'
+                    %tr
+                        %td
+                            %code build.spawnSpecific
+                        %td You may not build in {0}'s spawn area.
+                        %td
+                            %code
+                                message: '&c{build.spawnSpecific,&eYellow&c}'
+                    %tr
+                        %td
+                            %code build.pathway
+                        %td You may not build in this pathway.
+                        %td 
+                            %code message: '&c{build.pathway}'
+                    %tr
+                        %td
+                            %code build.room
+                        %td You may not build in this room.
+                        %td 
+                            %code message: '&c{build.room}'
+                    %tr
+                        %td
+                            %code build.region
+                        %td You cannot build in this region.
+                        %td 
+                            %code message: '&c{build.region}'
+                    %tr
+                        %td
+                            %code break.block
+                        %td You are not allowed to break this block.
+                        %td 
+                            %code message: '&c{break.block}'
+                    %tr
+                        %td
+                            %code enter.spawn
+                        %td You may not enter the spawn area for that team.
+                        %td 
+                            %code message: '&c{enter.region}'
+                    %tr
+                        %td
+                            %code enter.spawnSpecific
+                        %td You may not enter {0}'s spawn area.
+                        %td
+                            %code message: '&c{enter.spawnSpecific,&aGreen Team}'
+                    %tr
+                        %td
+                            %code enter.region
+                        %td You may not enter this region.
+                        %td 
+                            %code message: '&c{enter.region}'

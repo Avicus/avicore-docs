@@ -1,0 +1,44 @@
+.jumbotron.subhead
+    %h1 Components
+    %p This page contains all the components necessary when building a YAML.
+
+.row
+    = render('components_sidebar')
+
+    .col-md-9
+        .page-header#sg
+            %h3 Survival Games
+
+        %p 
+            Survival Games is a gamemode where you are to survive the players and nature itself using chests and alliances.
+        %br
+        %p
+            First, you must add the typical team name/color format (Tributes) with 
+            %code teams
+            by doing the following:
+
+        :markdown
+                teams:
+                  orange:
+                    title: Tributes
+                    max: 24
+
+        %p
+            Once you paste that in, it's necessary to add a
+            %code center
+            and a
+            %code radius
+            to tell the server where the players will spawn.
+
+        :markdown
+                center: 15,65,24 # typically the center where the players spawn in a circle
+                radius: 24 # how large of a radius you want players to spawn as (going too small may overlap players)
+
+        %p
+            Finally, finish off your YAML with the location of the sg import with
+            %code imports:
+            which some gamemodes may use to carry out features into other maps.
+
+        :markdown
+                imports:
+                - sg.yml

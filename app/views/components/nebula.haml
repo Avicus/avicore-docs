@@ -58,7 +58,38 @@
                     duration: 10m
                     max: 250
 
-        .page-header#ctw
+         .page-header#ctw
             %h4 3. Capture the Wool
-            %p 
-               Documentation for this subject is under development. Check back soon!
+            %p This game mode requires that addition of wool monuments, wool titles, and wool chests in the YAML.
+
+            %p Wools must be formatted under the wools configuration, collapsed under the teams section. Teams must capture the wools and bring them back to their base to win.
+
+            :markdown
+
+                    teams:
+                      yellow:
+                        spawn: 232.5,107,-53.5,90,0
+                        title: Yellow Team
+                        max: 20
+                        wools: # wools in the map are defined in this section
+                          cyan: # yellow must capture this wool (on pink side)
+                            name: Cyan Wool # the title of your wool to appear in-game
+                            chest: 49,114,-107 # the coordinate location of the wool chest. this auto regenerates.
+                            monument: 236,108,-55 # where the wool is to be placed to win (on yellow side)
+                          blue: # yellow must capture this wool (on pink side)
+                            name: Blue Wool
+                            chest: 49,114,-1
+                            monument: 236,108,-53 # where the wool is to be placed to win (on yellow side)
+                     pink:
+                       spawn: 7.5,107,-53.5,-90,0
+                       title: Pink Team
+                       max: 20
+                       wools:
+                         lime: # pink must capture this wool (on yellow side)
+                           name: Lime Wool
+                           chest: 190,114,-1
+                           monument: 3,108,-53 # where the wool is to be placed to win (on pink side)
+                         green: # pink must capture this wool (on yellow side)
+                           name: Green Wool
+                           chest: 190,114,-107 
+                           monument: 3,108,-55 # where the wool is to be placed to win (on yellow side)

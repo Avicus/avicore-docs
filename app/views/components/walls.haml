@@ -8,7 +8,7 @@
     .col-md-9
         .page-header
             %h3 The Walls
-            
+
         .page-header#walls
             %h4 Void-Building
             %p This game mode requires minor additions to the general YAML to include the 2 X and Y walls and to prevent void building.
@@ -22,14 +22,13 @@
 
                     info:
                       title: The Walls # The name of your map.
-                      world: Walls1 # The world that it is located in.
                       version: 1.0 # The map version, generally 1.0 when you first create it.
-                      type: walls # When making a walls map, always keep it was "walls".
+                      type: walls # When making a walls map, always keep it as "walls".
                       creators:
-                      - Hypixel #These are who helped make the map.
-                      spawn: -793,110,-172,0,0 #This is where players who join the match or die will spawn.
+                      - Hypixel # These are who helped make the map.
+                      spawn: -793.5,110,-172.5,0,0 #This is where players who join the match or die will spawn.
 
-                    void-build: false #This is to prevent players to leaving the map boundaries.
+                    void-build: false # This is to prevent players to leaving the map boundaries.
 
         .page-header#prep
             %h4 Preperation Times
@@ -37,10 +36,10 @@
                 This is used to tell how long players have to prepare before the walls drop. Use the
                 %code prep:
                 \module to make it tell when the walls will drop. The general time is 10 minutes, so it'd show up as;
-                
+
             :markdown
                     prep: 10m
-                
+
         .page-header#wallregions
             %h4 Wall Regions
             %p Here, you add where it detects the walls listed under the
@@ -51,14 +50,14 @@
                     wall-regions:
                     - x-wall
                     - z-wall
-        
+
         .page-header#teamregions
             %h4 Team Regions
             %p
                 Add the teams that are in the match, using
                 %code team-regions:
                 \.There should be 4 teams chosen from the reference page. Just put down their names like so, for instance this:
-            
+
             :markdown
 
                     team-regions:
@@ -66,25 +65,25 @@
                     - blue-team
                     - yellow-team
                     - green-team
-                  
+
         .page-header#arenaregion
             %h4 Arena Region
             %p
                 Add the arena-region. There is typically 1. It should be used as so:
                 %code arena-regions:
                 Under that, name the region "arena".
-            
+
             :markdown
                     arena-regions:
                     - arena
-              
+
         .page-header#regions
             %h4 General Region
             %p 
                 After all the others, you can place the regions here for the team sides. Put a regions tag there.
                 %code regions:
                 \After that, you can edit the following just like the normal regions you see on other examples.
-            
+
             :markdown
                     regions:
                       arena:
@@ -104,6 +103,6 @@
                             priority: 5
                             allow: true
                             who: 'red'
-            
-            
+
+
             %p You can now copy the other over and make the team names, colors, and spawns like the others.
